@@ -1,0 +1,26 @@
+{
+  "name": "jamset/process-load-manager",
+  "description": "ReactPHP based module aiming to protect a node against overloading",
+  "require": {
+    "php": ">=5.5.9",
+    "jamset/react_fractal_basic": "dev-master",
+    "jamset/commands-executor": "dev-master",
+    "react/react": "^0.4.2",
+    "react/zmq": "^0.3.0",
+    "react/event-loop": "^0.4.2",
+    "react/child-process": "^0.4.0"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jam Set",
+      "email": "jamset@joinger.org"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "React\\ProcessManager\\": "src/"
+    }
+  }
+}
