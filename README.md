@@ -55,8 +55,7 @@ $this->terminatorPauseStander = new React\ProcessManager\TerminatorPauseStander(
 ```
 
 and then put its method that handle termination and standing on pause/continue on many places in your code.
-
-(more frequent its calling would more fast process reaction to Pm command will occur)
+(the more often it will be called the faster will be the reaction to the Pm commands)
 
 ```php
 
