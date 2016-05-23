@@ -10,7 +10,7 @@ namespace React\ProcessManager\Inventory;
 use React\FractalBasic\Interfaces\ManagerDto;
 use React\ProcessManager\Abstracts\BasePmLmDto;
 use React\ProcessManager\LoadManager\Inventory\LoadManagerDto;
-use App\FWIndependent\React\PublisherPulsar\Inventory\PerformerSocketsParamsDto;
+use React\PublisherPulsar\Inventory\PerformerSocketsParamsDto;
 
 class ProcessManagerDto extends BasePmLmDto implements ManagerDto
 {
