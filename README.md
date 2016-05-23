@@ -21,7 +21,7 @@ Note: currently functioning only on Ubuntu/Debian OS (because of CommandsExecuto
 
 ##Examples
 
-###Example of Gearman queue implementation. Start Pm/Lm management:
+###Example of Gearman (http://gearman.org/) queue implementation. Start Pm/Lm management:
 
 ```php
     $this->manager = new React\ProcessManager\Pm();
