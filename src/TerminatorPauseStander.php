@@ -97,6 +97,18 @@ class TerminatorPauseStander extends BaseExecutor implements Pauseable
         $this->uSleepTime = $uSleepTime;
     }
 
+    /**
+     * @return null
+     * @throws ProcessManagerException
+     */
+    public function checkPmCommand()
+    {
+        $this->checkSubscription();
+        $this->standOnPauseIfMust();
+
+        return null;
+    }
+
     /**Check if subscription contain pid of process
      * @return mixed
      */
