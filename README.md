@@ -41,63 +41,76 @@ Note: For correct tasks execution is needed module that will handle task, that w
 
 ```php
 
-    $this->manager = new React\ProcessManager\Pm();
+    $manager = new React\ProcessManager\Pm();      
+       
+    $processManagerDto = new React\ProcessManager\Inventory\ProcessManagerDto();
     
+    //Number of tasks, that have to be handled by Pm&Lm
+    $processManagerDto->setTasksNumber($tasksNumber);
     
-    $this->manager->setProcessManagerDto($this->gearmanDto->getProcessManagerDto());
+    //its code showed lower, implementation for Laravel console command, but it could any command, launched by shell 
+    //(by proc_open function, http://php.net/manual/ru/function.proc-open.php)
+    $processManagerDto->setLoadManagerProcessCommand("php artisan react:load-manager");
     
+    //the same. Any command, by which launched process, that handles tasks from queue and execute specific work
+    $processManagerDto->setWorkerProcessCommand("php artisan gearman:fetch:stat:worker);
+    
+    $processManagerDto->setModuleName("ProcessManager " . $moduleName);
+    
+    $pmLmSocketsParams = new PmLmSocketsParamsDto();
+    
+    $pmLmSocketsParams->setPmLmRequestAddress("tcp://127.0.0.1:6267");
+    $processManagerDto->setPmLmSocketsParams($pmLmSocketsParams);
+    
+    $loadManagerDto = new LoadManagerDto();
+    
+    //in percentage
+    $loadManagerDto->setMemFreeUsagePercentageLimit(20);
+    $loadManagerDto->setCpuUsagePercentageLimit(90);
+    $loadManagerDto->setModuleName("LoadManager " . $moduleName);
+    $loadManagerDto->setPmLmSocketsParams($pmLmSocketsParams);
+    $loadManagerDto->setStandardMemoryGap(200000); //Kb
+    
+    $processManagerDto->setLoadManagerDto($loadManagerDto);
+    
+    $performerSocketsParams = new PerformerSocketsParamsDto();
+    $performerSocketsParams->setPublisherPmSocketAddress("tcp://127.0.0.1:6268");
+    $processManagerDto->setPerformerSocketsParams($performerSocketsParams);              
         
+    $manager->setProcessManagerDto($processManagerDto);    
         
-        
-        
-    //case described in Features    
-    $this->manager->setSigTermBlockingAgent(true); 
+    //case described in Features        
+    $manager->setSigTermBlockingAgent(true); 
     
     //main work
-    $this->manager->manage();
+    $manager->manage();
     
     //if PM loading as task of high level, i.e. in Gearman
-    $this->manager->getExecutionDto()->setExecutionMessage("PM with id " . $taskId . " going to finish.");
-    $this->manager->getExecutionDto()->setTaskId($taskId);
+    $manager->getExecutionDto()->setExecutionMessage("PM with id " . $taskId . " going to finish.");
+    $manager->getExecutionDto()->setTaskId($taskId);
     
-    //send result into queue to handle it with TasksInspector: report a problem or repeat task's execution if error exists 
-    $this->job->sendComplete(serialize($this->manager->getExecutionDto()));
+    //for case of Gearman architecture: send result into queue to handle it with TasksInspector: 
+    //report a problem or repeat task's execution if error exists 
+    $job->sendComplete(serialize($manager->getExecutionDto()));
 ```
 
+Code of Load manager command (called by Pm during initialization). Example for Laravel console command:
 
-$processManagerDto = new ProcessManagerDto();
+```php
+    /**
+     * Execute the console command.
+     *
+     * @return null
+     */
+    public function fire()
+    {
+        $loadManager = new React\ProcessManager\LoadManager\Lm();
+        $loadManager->manage();
 
-//Number of tasks, that have to be handled by Pm&Lm
-$processManagerDto->setTasksNumber($tasksNumber);
+        return null;
+    }
 
-//its code showed lower, implementation for Laravel console command, but it could any command, launched by shell 
-//(by [proc_open](http://php.net/manual/ru/function.proc-open.php) function)
-$processManagerDto->setLoadManagerProcessCommand("php artisan react:load-manager");
-
-//the same. Any command, by which launched process, that handles tasks from queue and execute specific work
-$processManagerDto->setWorkerProcessCommand("php artisan gearman:fetch:stat:worker);
-
-$processManagerDto->setModuleName("ProcessManager " . $moduleName);
-
-$pmLmSocketsParams = new PmLmSocketsParamsDto();
-
-$pmLmSocketsParams->setPmLmRequestAddress("tcp://127.0.0.1:6267");
-$processManagerDto->setPmLmSocketsParams($pmLmSocketsParams);
-
-$loadManagerDto = new LoadManagerDto();
-
-//in percentage
-$loadManagerDto->setMemFreeUsagePercentageLimit(20);
-$loadManagerDto->setCpuUsagePercentageLimit(90);
-$loadManagerDto->setModuleName("LoadManager " . $moduleName);
-$loadManagerDto->setPmLmSocketsParams($pmLmSocketsParams);
-$loadManagerDto->setStandardMemoryGap(200000); //Kb
-
-$processManagerDto->setLoadManagerDto($loadManagerDto);
-
-$performerSocketsParams = new PerformerSocketsParamsDto();
-$performerSocketsParams->setPublisherPmSocketAddress("tcp://127.0.0.1:6268");
-$processManagerDto->setPerformerSocketsParams($performerSocketsParams);
+```
 
 ###Example of connecting script (Service) to the module:
 
