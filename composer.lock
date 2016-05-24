@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6255f8e6b35e7fc20101b86006338c0d",
-    "content-hash": "6aecb4ec09d6bd6557018d5821f29be2",
+    "hash": "5c1fb599184cf837150c59800de0bff3",
+    "content-hash": "1936774fc1d73700882ce50098d2c691",
     "packages": [
         {
             "name": "evenement/evenement",
@@ -104,12 +104,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jamset/commands-executor.git",
-                "reference": "e6f6896616ec78282dcaa5ebc81c44de5cb8434b"
+                "reference": "370dc75a09dc94de8991fbba579a0d97e520ef54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jamset/commands-executor/zipball/e6f6896616ec78282dcaa5ebc81c44de5cb8434b",
-                "reference": "e6f6896616ec78282dcaa5ebc81c44de5cb8434b",
+                "url": "https://api.github.com/repos/jamset/commands-executor/zipball/370dc75a09dc94de8991fbba579a0d97e520ef54",
+                "reference": "370dc75a09dc94de8991fbba579a0d97e520ef54",
                 "shasum": ""
             },
             "require": {
@@ -132,7 +132,7 @@
                 }
             ],
             "description": "Module containing classes aiming on execution of system commands",
-            "time": "2016-05-21 19:51:50"
+            "time": "2016-05-22 12:11:21"
         },
         {
             "name": "jamset/php-adjutants",
@@ -170,6 +170,79 @@
             ],
             "description": "Adjutants for specific processing arrays, numbers, strings",
             "time": "2016-05-19 13:39:04"
+        },
+        {
+            "name": "jamset/phpmailer-adapter",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jamset/phpmailer-adapter.git",
+                "reference": "ed817071b214f397c5277387ac1ddc6567a191f4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jamset/phpmailer-adapter/zipball/ed817071b214f397c5277387ac1ddc6567a191f4",
+                "reference": "ed817071b214f397c5277387ac1ddc6567a191f4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9",
+                "phpmailer/phpmailer": "~5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PHPMailerAdapter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jam Set",
+                    "email": "jamset@joinger.org"
+                }
+            ],
+            "description": "Adapter to PHPMailer",
+            "time": "2016-05-24 18:03:07"
+        },
+        {
+            "name": "jamset/publisher-pulsar",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jamset/publisher-pulsar.git",
+                "reference": "bade4250d7518fff4d1a2c6353284ab9199b08ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jamset/publisher-pulsar/zipball/bade4250d7518fff4d1a2c6353284ab9199b08ec",
+                "reference": "bade4250d7518fff4d1a2c6353284ab9199b08ec",
+                "shasum": ""
+            },
+            "require": {
+                "jamset/react_fractal_basic": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "React\\PublisherPulsar\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jam Set",
+                    "email": "jamset@joinger.org"
+                }
+            ],
+            "description": "ReactPHP based module allowing to coordinate set of independent processes",
+            "time": "2016-05-19 17:06:11"
         },
         {
             "name": "jamset/react_fractal_basic",
@@ -211,6 +284,44 @@
             ],
             "description": "Basic level of ReactPHP based modules fractal architecture",
             "time": "2016-05-19 13:59:39"
+        },
+        {
+            "name": "jamset/tasks-inspector",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jamset/tasks-inspector.git",
+                "reference": "a18b7405454685e9b4082f9bf00595ca0c454bec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jamset/tasks-inspector/zipball/a18b7405454685e9b4082f9bf00595ca0c454bec",
+                "reference": "a18b7405454685e9b4082f9bf00595ca0c454bec",
+                "shasum": ""
+            },
+            "require": {
+                "jamset/phpmailer-adapter": "dev-master",
+                "monolog/monolog": "^1.19",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TasksInspector\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jam Set",
+                    "email": "jamset@joinger.org"
+                }
+            ],
+            "description": "Module allowing to handle DTO with execution results and make some needed action based on it",
+            "time": "2016-05-24 18:09:04"
         },
         {
             "name": "monolog/monolog",
@@ -289,6 +400,66 @@
                 "psr-3"
             ],
             "time": "2016-05-20 19:14:51"
+        },
+        {
+            "name": "phpmailer/phpmailer",
+            "version": "v5.2.15",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPMailer/PHPMailer.git",
+                "reference": "d0186171b28af4f06ac2ad8a84a8f3d6cbc3ba6c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/d0186171b28af4f06ac2ad8a84a8f3d6cbc3ba6c",
+                "reference": "d0186171b28af4f06ac2ad8a84a8f3d6cbc3ba6c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0"
+            },
+            "require-dev": {
+                "phpdocumentor/phpdocumentor": "*",
+                "phpunit/phpunit": "4.7.*"
+            },
+            "suggest": {
+                "league/oauth2-google": "Needed for Google XOAUTH2 authentication"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "class.phpmailer.php",
+                    "class.phpmaileroauth.php",
+                    "class.phpmaileroauthgoogle.php",
+                    "class.smtp.php",
+                    "class.pop3.php",
+                    "extras/EasyPeasyICS.php",
+                    "extras/ntlm_sasl_client.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Jagielski",
+                    "email": "jimjag@gmail.com"
+                },
+                {
+                    "name": "Marcus Bointon",
+                    "email": "phpmailer@synchromedia.co.uk"
+                },
+                {
+                    "name": "Andy Prevost",
+                    "email": "codeworxtech@users.sourceforge.net"
+                },
+                {
+                    "name": "Brent R. Matzelle"
+                }
+            ],
+            "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
+            "time": "2016-05-10 18:39:36"
         },
         {
             "name": "psr/log",
@@ -533,7 +704,9 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "jamset/react_fractal_basic": 20,
-        "jamset/commands-executor": 20
+        "jamset/commands-executor": 20,
+        "jamset/publisher-pulsar": 20,
+        "jamset/tasks-inspector": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

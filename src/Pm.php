@@ -30,7 +30,7 @@ use React\ProcessManager\Inventory\ProcessDto;
 use React\ProcessManager\Inventory\ProcessManagerDto;
 use React\ProcessManager\Inventory\PmStateDto;
 use React\ProcessManager\Inventory\DataTransferConstants;
-use App\FWIndependent\TasksInspector\Inventory\ExecutionDto;
+use TasksInspector\Inventory\ExecutionDto;
 use React\ChildProcess\Process;
 use React\EventLoop\Timer\Timer;
 use React\ZMQ\Context;

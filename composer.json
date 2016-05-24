@@ -6,6 +6,8 @@
     "jamset/react_fractal_basic": "dev-master",
     "jamset/commands-executor": "dev-master",
     "jamset/publisher-pulsar": "dev-master",
+    "jamset/tasks-inspector": "dev-master",
+    "monolog/monolog": "^1.19",
     "react/react": "^0.4.2",
     "react/zmq": "^0.3.0",
     "react/event-loop": "^0.4.2",
