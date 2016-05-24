@@ -18,7 +18,8 @@ Where process is worker that do any useful work.
 
 ###Features
 
-- Can pause/continue processes and so important data will not be loosed by termination
+- Can pause/continue processes and so important data will not be loosed by termination with high level of probability
+(to make it bigger it's possible to set bigger MemoryGap at initialization)
 
 - Can terminate processes by SIGTERM or by sending command in process to throw an Exception that will interrupt execution
 
@@ -29,9 +30,10 @@ socket. Where all connected processes are subscribers and they search their PID 
 relevant exception, that have to be handled in process and lead to the conclusion of a script, allowing to send script's 
 results somewhere if needed or just to make immediate termination. In default mode to make termination Pm just sends SIGTERM
 
-- You can choose size of MemFree and CPU usage limit, and it will balance processes numbers in this limits. 
+- You can choose size of MemFree and CPU usage limit, and it will balance processes number in this limits
 
-Note: For correct tasks execution is needed module that will handle task, that wasn't complete correctly because of force termination.
+Note: For correct tasks execution is needed module that will handle tasks, that were not complete correctly because of 
+force termination.
 
 ##Schema
 
@@ -64,7 +66,6 @@ Note: For correct tasks execution is needed module that will handle task, that w
     
     $loadManagerDto = new LoadManagerDto();
     
-    //in percentage
     $loadManagerDto->setMemFreeUsagePercentageLimit(20);
     $loadManagerDto->setCpuUsagePercentageLimit(90);
     $loadManagerDto->setModuleName("LoadManager " . $moduleName);
