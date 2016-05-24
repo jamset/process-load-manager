@@ -70,7 +70,7 @@ class LoadManagerDto extends BasePmLmDto implements ManagerDto
         return $this->standardMemoryGap;
     }
 
-    /**
+    /**In Kb, allow to prevent creating new processes when load size will achieve size equal to "limit size - gap size"
      * @param int $standardMemoryGap
      */
     public function setStandardMemoryGap($standardMemoryGap)
