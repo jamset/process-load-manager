@@ -1,5 +1,5 @@
 # Process & Load Manager (Pm&Lm)
-ReactPHP based process manager, allowing to control loading and automatically stop or pause processes if they exceed 
+ReactPHP based process manager, allowing to control loading and automatically stop or temporarily pause processes if they exceed 
 set CPU usage or MemFree limit. 
 
 Note: currently functioning only on Ubuntu/Debian OS (because of 
@@ -11,17 +11,18 @@ Note: currently functioning only on Ubuntu/Debian OS (because of
 
 ##Description
 
-This module aim is to protect a node against overloading by controlling load size of every process
-that launched by Pm/Lm through any queue system (such as RabbitMQ, Gearman or other). 
+Module goal is to protect a node against overloading by controlling load size of every process
+that launched by Pm&Lm through any queue system (such as Gearman, RabbitMQ or other).
+[Example of use could be found here](https://github.com/jamset/gearman-conveyor)
 
 Where process is worker that do any useful work. 
 
 ###Features
 
 - Can pause/continue processes and so important data will not be loosed by termination with high level of probability
-(to make it bigger it's possible to set bigger MemoryGap at initialization)
+(to make it bigger it's possible to set bigger MemoryGap parameter at initialization)
 
-- Can terminate processes by SIGTERM or by sending command in process to throw an Exception that will interrupt execution
+- Can terminate processes by SIGTERM or by sending command in process to throw an Exception that can be handled and interrupt execution
 
 I.e. Gearman (http://gearman.org/) worker (queue handler on the schema) block any signal besides SIGKILL, so become impossible to correctly 
 send SIGTERM (and so handle termination, do something during it) from Pm and correct termination become possible only 
@@ -32,7 +33,7 @@ results somewhere if needed or just to make immediate termination. In default mo
 
 - You can choose size of MemFree and CPU usage limit, and it will balance processes number in this limits
 
-Note: For correct tasks execution is needed module that will handle tasks, that were not complete correctly because of 
+Note: For correct tasks execution is needed module that will handle tasks, which were not complete correctly because of 
 force termination.
 
 ##Schema
