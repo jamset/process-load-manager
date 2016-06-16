@@ -9,6 +9,8 @@ Note: currently functioning only on Ubuntu/Debian OS (because of
 
 `composer require jamset/process-load-manager`
 
+Additional needed libs installation guide could be found [here](https://github.com/jamset/gearman-conveyor/blob/master/docs/environment.md) 
+
 ##Description
 
 Module goal is to protect a node against overloading by controlling load size of every process
