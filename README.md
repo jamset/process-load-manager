@@ -11,6 +11,8 @@ Note: currently functioning only on Ubuntu/Debian OS (because of
 
 Additional needed libs installation guide could be found [here](https://github.com/jamset/gearman-conveyor/blob/master/docs/environment.md). Section "Install PECL" and "Optional".
 
+Note: not tested on PHP7
+
 ##Description
 
 Module goal is to protect a node against overloading by controlling load size of every process
