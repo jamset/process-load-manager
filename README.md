@@ -5,7 +5,7 @@ set CPU usage or MemFree limit.
 Note: currently functioning only on Ubuntu/Debian OS (because of 
 [CommandsExecutor](https://github.com/jamset/commands-executor) module limitations)
 
-##Install
+## Install
 
 `composer require jamset/process-load-manager`
 
@@ -13,7 +13,7 @@ Additional needed libs installation guide could be found [here](https://github.c
 
 Note: not tested on PHP7
 
-##Description
+## Description
 
 Module goal is to protect a node against overloading by controlling load size of every process
 that launched by Pm&Lm through any queue system (such as Gearman, RabbitMQ or other).
@@ -21,7 +21,7 @@ that launched by Pm&Lm through any queue system (such as Gearman, RabbitMQ or ot
 
 Where process is worker that do any useful work. 
 
-###Features
+### Features
 
 - Can pause/continue processes and so important data will not be loosed by termination with high level of probability
 (to make it bigger it's possible to set bigger MemoryGap parameter at initialization)
@@ -40,11 +40,11 @@ results somewhere if needed or just to make immediate termination. In default mo
 Note: For correct tasks execution is needed module that will handle tasks, which were not complete correctly because of 
 force termination.
 
-##Schema
+## Schema
 
 ![Process & Load manager schema](https://github.com/jamset/process-load-manager/raw/master/images/pm-lm-schema.jpg)
 
-##Examples
+## Examples
 
 ```php
 
@@ -118,7 +118,7 @@ Code of Load manager command (called by Pm during initialization). Example for L
 
 ```
 
-###Example of connecting script (Service) to the module:
+### Example of connecting script (Service) to the module:
 
 Init TerminatorPauseStander
 
