@@ -1,4 +1,6 @@
 # Process & Load Manager (Pm&Lm)
+
+### Not maintained. Considered as prototype
 ReactPHP based process manager, allowing to control loading and automatically stop or temporarily pause processes if they exceed 
 set CPU usage or MemFree limit. 
 
